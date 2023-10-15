@@ -17,6 +17,7 @@ input {
   display: block;
 
   box-sizing: border-box;
+  width: 284px;
   padding: 6px 12px;
 
   color: var(--dark-100, #808080);
@@ -24,17 +25,66 @@ input {
   border: 1px solid var(--dark-300, #4c4c4c);
   border-radius: 2px;
 
-  &:focus {
-    color: var(--light-100, #fff);
-    border: 1px solid var(--light-100, #fff);
+  &.search {
+    padding: 6px 30px;
+  }
+
+  &.error::placeholder {
+    color: var(--danger-300, #f23d61);
   }
 
   &:hover {
     background: var(--dark-700, #171717);
+    border: 1px solid var(--dark-100, #808080);
+  }
+
+  &:focus {
+    color: var(--dark-100, #808080);
+    border: 1px solid var(--info-700, #2f68cc);
+  }
+
+  &:active {
+    color: var(--light-100, #fff);
+    border: 1px solid var(--light-100, #fff);
+  }
+
+  &.error {
+    color: var(--danger-300, #f23d61);
+    border: 1px solid var(--danger-300, #f23d61);
   }
 
   &:disabled {
     color: var(--dark-300, #4c4c4c);
+    background: var(--dark-700, #171717);
     border: 1px solid var(--dark-300, #4c4c4c);
   }
+}
+
+.errorSpan {
+  font-size: 12px;
+  color: var(--danger-300, #f23d61);
+}
+
+.passwordButton {
+  position: absolute;
+  top: 26px;
+  left: 245px;
+  padding: 6px;
+}
+
+.searchButton {
+  position: absolute;
+  top: 29px;
+  left: 0;
+  padding: 3px;
+}
+
+.crossButton {
+  position: absolute;
+  top: 26px;
+  left: 250px;
+
+  width: 20px;
+  height: 20px;
+  padding: 6px;
 }
