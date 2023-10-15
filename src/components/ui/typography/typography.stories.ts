@@ -1,5 +1,6 @@
-import { Typography } from '@/components/ui'
 import { Meta, StoryObj } from '@storybook/react'
+
+import { Typography } from './'
 
 const meta = {
   argTypes: {
