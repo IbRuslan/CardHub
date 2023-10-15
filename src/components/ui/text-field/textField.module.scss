@@ -1,0 +1,40 @@
+.textFiled {
+  position: relative;
+}
+
+.label {
+  font-size: 14px;
+  color: var(--dark-100, #808080);
+
+  &.disabled {
+    color: var(--dark-300, #4c4c4c);
+  }
+}
+
+input {
+  all: unset;
+
+  display: block;
+
+  box-sizing: border-box;
+  padding: 6px 12px;
+
+  color: var(--dark-100, #808080);
+
+  border: 1px solid var(--dark-300, #4c4c4c);
+  border-radius: 2px;
+
+  &:focus {
+    color: var(--light-100, #fff);
+    border: 1px solid var(--light-100, #fff);
+  }
+
+  &:hover {
+    background: var(--dark-700, #171717);
+  }
+
+  &:disabled {
+    color: var(--dark-300, #4c4c4c);
+    border: 1px solid var(--dark-300, #4c4c4c);
+  }
+}
