@@ -66,20 +66,28 @@ input {
 }
 
 .passwordButton {
+  cursor: pointer;
+
   position: absolute;
   top: 26px;
   left: 245px;
+
   padding: 6px;
 }
 
 .searchButton {
+  cursor: pointer;
+
   position: absolute;
   top: 29px;
   left: 0;
+
   padding: 3px;
 }
 
 .crossButton {
+  cursor: pointer;
+
   position: absolute;
   top: 26px;
   left: 250px;

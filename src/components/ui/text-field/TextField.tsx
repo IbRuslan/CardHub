@@ -32,15 +32,15 @@ export const TextField = (props: TextFieldPropsType) => {
       </Typography>
       {search && (
         <>
-          <button className={s.searchButton} onClick={() => {}}>
+          <div className={s.searchButton} onClick={() => {}}>
             <Search />
-          </button>
+          </div>
         </>
       )}
       {(search ? value : false) && (
-        <button className={s.crossButton} onClick={() => onChangeValue && onChangeValue('')}>
+        <div className={s.crossButton} onClick={() => onChangeValue && onChangeValue('')}>
           <Cross />
-        </button>
+        </div>
       )}
 
       <input
@@ -54,9 +54,9 @@ export const TextField = (props: TextFieldPropsType) => {
         {...rest}
       />
       {password && (
-        <button className={s.passwordButton} onClick={() => setPasswordVisible(prev => !prev)}>
+        <div className={s.passwordButton} onClick={() => setPasswordVisible(prev => !prev)}>
           {passwordVisible ? <ClosedEye /> : <Eye />}
-        </button>
+        </div>
       )}
       <Typography
         as={'label'}
