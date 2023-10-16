@@ -1,4 +1,4 @@
-import { DropDownMenu } from '@/components/ui'
+import { DropDownItem, DropDownMenu } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 import { ExitIcon, HomeIcon } from '@radix-ui/react-icons'
 
@@ -6,18 +6,25 @@ export function App() {
   return (
     <div>
       <Button>hello</Button>
-      <DropDownMenu
-        callback={() => {
-          console.log('yo')
-        }}
-        content={[
-          { email: 'ribragimov2003@gmail.com', icon: <HomeIcon />, id: 1, title: 'Ivan' },
-          { icon: <HomeIcon />, id: 2, title: 'My profile' },
-          { icon: <ExitIcon />, id: 3, title: 'Log out' },
-        ]}
-        variant={'profiledrop'}
-      >
-        <HomeIcon />
+      <DropDownMenu trigger={<HomeIcon />} variant={'profiledrop'}>
+        <DropDownItem
+          el={{ email: 'ribragimov2003@gmail.com', icon: <HomeIcon />, title: 'Ivan' }}
+          onSelect={() => {
+            console.log('profile')
+          }}
+        />
+        <DropDownItem
+          el={{ icon: <HomeIcon />, title: 'Ivan' }}
+          onSelect={() => {
+            console.log('profile')
+          }}
+        />
+        <DropDownItem
+          el={{ icon: <ExitIcon />, title: 'Log out' }}
+          onSelect={() => {
+            console.log('log out')
+          }}
+        />
       </DropDownMenu>
     </div>
   )
