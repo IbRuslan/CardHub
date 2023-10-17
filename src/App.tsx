@@ -1,4 +1,4 @@
-import { DropDownItem, DropDownMenu } from '@/components/ui'
+import { Avatar, DropDownItem, DropDownMenu } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 import { ExitIcon, HomeIcon } from '@radix-ui/react-icons'
 
@@ -26,6 +26,7 @@ export function App() {
           }}
         />
       </DropDownMenu>
+      <Avatar />
     </div>
   )
 }
