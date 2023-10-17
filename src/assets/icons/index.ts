@@ -1,1 +1,5 @@
 export * from './logout'
+export * from './ClosedEye'
+export * from './Eye'
+export * from './Search'
+export * from './Cross'
