@@ -4,6 +4,7 @@ export type TextFieldPropsType = {
   className?: string
   disabled?: boolean
   error?: string
+  label?: string
   onChangeValue?: (value: string) => void
   password?: boolean
   search?: boolean
@@ -16,7 +17,8 @@ import { Typography } from '@/components/ui'
 import s from './textField.module.scss'
 
 export const TextField = (props: TextFieldPropsType) => {
-  const { className, disabled, error, onChangeValue, password, search, value, ...rest } = props
+  const { className, disabled, error, label, onChangeValue, password, search, value, ...rest } =
+    props
   const [passwordVisible, setPasswordVisible] = useState(false)
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     onChangeValue && onChangeValue(e.currentTarget.value)
@@ -24,13 +26,15 @@ export const TextField = (props: TextFieldPropsType) => {
 
   return (
     <div className={s.textFiled}>
-      <Typography
-        as={'label'}
-        className={`${s.label} ${disabled ? s.disabled : ''}`}
-        variant={'body1'}
-      >
-        Input
-      </Typography>
+      {label && (
+        <Typography
+          as={'label'}
+          className={`${s.label} ${disabled ? s.disabled : ''}`}
+          variant={'body1'}
+        >
+          {label}
+        </Typography>
+      )}
       {search && (
         <>
           <div className={s.searchButton} onClick={() => {}}>
