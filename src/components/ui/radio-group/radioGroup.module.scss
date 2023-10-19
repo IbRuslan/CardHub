@@ -1,0 +1,55 @@
+.radioGroupRoot {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.wrapperItem {
+  cursor: pointer;
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.radioGroupItem {
+  cursor: pointer;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  width: 36px;
+  height: 36px;
+  padding: 9px;
+
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+
+  &::before {
+    content: '';
+
+    display: block;
+
+    width: 16px;
+    height: 16px;
+
+    border: 2px solid var(--color-accent-500);
+    border-radius: 50%;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  &[data-state='checked']::after {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-accent-500);
+  }
+}

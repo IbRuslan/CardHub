@@ -1,4 +1,4 @@
-import { Header, TabSwitcher, TabTrigger } from '@/components/ui'
+import { Header, RadioGroupItem, SuperRadioGroup, TabSwitcher, TabTrigger } from '@/components/ui'
 
 export function App() {
   const onChangeSelect = (select: string) => {
@@ -13,6 +13,13 @@ export function App() {
           <TabTrigger title={'My Cards'} value={'tab1'} />
           <TabTrigger title={'All Cards'} value={'tab2'} />
         </TabSwitcher>
+      </div>
+      <div>
+        <SuperRadioGroup defaultValue={'not'} onChange={onChangeSelect}>
+          <RadioGroupItem title={'Did not know'} value={'not'} />
+          <RadioGroupItem title={'Forgot'} value={'Forgot'} />
+          <RadioGroupItem title={'Knew the answer'} value={'know'} />
+        </SuperRadioGroup>
       </div>
     </div>
   )
