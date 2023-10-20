@@ -1,7 +1,9 @@
 import { useState } from 'react'
 
 import {
+  Button,
   Header,
+  Modal,
   RadioGroupItem,
   SuperRadioGroup,
   SuperSlider,
@@ -17,6 +19,7 @@ export function App() {
   const [minCards, setMinCards] = useState(0)
   const [maxCards, setMaxCards] = useState(50)
   const [rangeValue, setRangeValue] = useState([minCards, maxCards])
+  const [open, setOpen] = useState(false)
 
   const handleSliderCommitted = (value: number[]) => {
     setMinCards(value[0])
@@ -47,6 +50,37 @@ export function App() {
           onValueCommit={handleSliderCommitted}
           value={rangeValue}
         />
+      </div>
+      <div>
+        <Button onClick={() => setOpen(true)} variant={'primary'}>
+          Add New Pack
+        </Button>
+        <Modal
+          onClickSetChanges={() => {}}
+          onOpenChange={setOpen}
+          open={open}
+          titleForButton={'Add New Pack'}
+          titleModal={'Add New Pack'}
+        >
+          {'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniamdsa\n' +
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniamdsa\n' +
+            'Select-box\n' +
+            'Select-box\n' +
+            'Input\n' +
+            'Input\n' +
+            'Input\n' +
+            'Input\n' +
+            'Check-box\n' +
+            'Select-box\n' +
+            'Select-box\n' +
+            'Question:\n' +
+            'Change Cover\n' +
+            'Answer:\n' +
+            'Change Cover\n' +
+            'Input\n' +
+            'Input\n' +
+            'Check-box'}
+        </Modal>
       </div>
     </div>
   )
