@@ -4,13 +4,13 @@ import {
   Button,
   Header,
   Modal,
+  Pagination,
   RadioGroupItem,
   SuperRadioGroup,
   SuperSlider,
   TabSwitcher,
   TabTrigger,
 } from '@/components/ui'
-import { Select } from '@/components/ui/Select'
 
 export function App() {
   const onChangeSelect = (select: string) => {
@@ -21,7 +21,15 @@ export function App() {
   const [maxCards, setMaxCards] = useState(50)
   const [rangeValue, setRangeValue] = useState([minCards, maxCards])
   const [open, setOpen] = useState(false)
-  const [value, setValue] = useState(100)
+  const [value, setValue] = useState(5)
+  const [page, setPage] = useState(1)
+
+  const totalPage = 100
+
+  const changePageHandler = (page: number, value: number) => {
+    setPage(page)
+    setValue(value)
+  }
 
   const handleSliderCommitted = (value: number[]) => {
     setMinCards(value[0])
@@ -85,15 +93,13 @@ export function App() {
         </Modal>
       </div>
       <div>
-        <Select
-          options={[
-            { title: '100', value: 100 },
-            { title: '10', value: 10 },
-            { title: '15', value: 15 },
-          ]}
-          setValue={setValue}
+        <Pagination
+          onChangePage={changePageHandler}
+          page={page}
+          select
+          totalCount={totalPage}
           value={value}
-        ></Select>
+        />
       </div>
     </div>
   )
