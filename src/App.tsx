@@ -10,6 +10,7 @@ import {
   TabSwitcher,
   TabTrigger,
 } from '@/components/ui'
+import { Select } from '@/components/ui/Select'
 
 export function App() {
   const onChangeSelect = (select: string) => {
@@ -20,6 +21,7 @@ export function App() {
   const [maxCards, setMaxCards] = useState(50)
   const [rangeValue, setRangeValue] = useState([minCards, maxCards])
   const [open, setOpen] = useState(false)
+  const [value, setValue] = useState(100)
 
   const handleSliderCommitted = (value: number[]) => {
     setMinCards(value[0])
@@ -81,6 +83,17 @@ export function App() {
             'Input\n' +
             'Check-box'}
         </Modal>
+      </div>
+      <div>
+        <Select
+          options={[
+            { title: '100', value: 100 },
+            { title: '10', value: 10 },
+            { title: '15', value: 15 },
+          ]}
+          setValue={setValue}
+          value={value}
+        ></Select>
       </div>
     </div>
   )

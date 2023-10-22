@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 
 import { ArrowDown, ArrowUp } from '@/assets/icons'
-import { Label } from '@/components/ui/label'
+import { Typography } from '@/components/ui'
 import * as RadixSelect from '@radix-ui/react-select'
 import { clsx } from 'clsx'
 
@@ -45,7 +45,11 @@ export const Select: FC<SelectPropsType> = ({
       value={value}
     >
       <RadixSelect.Trigger className={classNames.trigger} placeholder={'select'} value={value}>
-        {label && <Label className={s.label} title={label} />}
+        {label && (
+          <Typography as={'label'} className={s.label} variant={'body2'}>
+            label
+          </Typography>
+        )}
         {itemSelect && itemSelect.title}
         <RadixSelect.Icon className={s.arrows}>
           {open ? <ArrowUp /> : <ArrowDown />}
