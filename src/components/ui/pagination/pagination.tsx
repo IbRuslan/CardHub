@@ -72,15 +72,17 @@ export const Pagination = ({ onChangePage, select, totalCount, ...props }: Pagin
       {select && (
         <div className={s.select}>
           <span>Показать</span>
-          <Select
-            options={[
-              { title: '5', value: 5 },
-              { title: '10', value: 10 },
-              { title: '15', value: 15 },
-            ]}
-            setValue={setValue}
-            value={value}
-          />
+          <div>
+            <Select
+              options={[
+                { title: '5', value: 5 },
+                { title: '10', value: 10 },
+                { title: '15', value: 15 },
+              ]}
+              setValue={setValue}
+              value={value}
+            />
+          </div>
           <span>на странице</span>
         </div>
       )}
