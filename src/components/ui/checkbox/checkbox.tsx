@@ -7,11 +7,12 @@ import s from './checkbox.module.scss'
 type SuperCheckboxProps = {
   checked?: boolean
   disabled?: boolean
-  id: string
+  id?: string
+  label?: string
   onChange?: (checked: boolean) => void
 }
 
-export const SuperCheckbox = ({ checked, disabled, id, onChange }: SuperCheckboxProps) => {
+export const SuperCheckbox = ({ checked, disabled, id, label, onChange }: SuperCheckboxProps) => {
   return (
     <div style={{ alignItems: 'center', display: 'flex' }}>
       <div className={s.wrapper}>
@@ -25,13 +26,13 @@ export const SuperCheckbox = ({ checked, disabled, id, onChange }: SuperCheckbox
         >
           {checked && (
             <Checkbox.Indicator className={s.CheckboxIndicator} forceMount>
-              <CheckIcon />
+              <CheckIcon className={s.icon} />
             </Checkbox.Indicator>
           )}
         </Checkbox.Root>
       </div>
-      <Typography as={'label'} variant={'caption'}>
-        Check-box
+      <Typography as={'label'} className={s.label} variant={'body2'}>
+        {label}
       </Typography>
     </div>
   )
