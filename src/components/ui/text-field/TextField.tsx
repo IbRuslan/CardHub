@@ -60,7 +60,7 @@ export const TextField = (props: TextFieldPropsType) => {
       />
       {password && (
         <div className={s.passwordButton} onClick={() => setPasswordVisible(prev => !prev)}>
-          {passwordVisible ? <ClosedEye /> : <Eye />}
+          {passwordVisible ? <Eye /> : <ClosedEye />}
         </div>
       )}
       <Typography
