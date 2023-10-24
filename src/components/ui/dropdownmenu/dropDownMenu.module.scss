@@ -1,12 +1,11 @@
-@mixin contentDropMenu($arrowCalc) {
+@mixin contentDropMenu() {
   will-change: transform, opacity;
 
-  position: relative;
   z-index: 1;
   right: 89px;
 
   min-width: 130px;
-  padding: 10px;
+  padding: 12px;
 
   background-color: var(--color-dark-700);
   border: 1px solid var(--color-dark-300);
@@ -19,7 +18,12 @@
   animation-timing-function: cubic-bezier(0.2, 2, 0.3, 1);
 
   .itemwrapper .item:first-child {
+    padding-top: 0;
     border-top: none;
+  }
+
+  .itemwrapper .item:last-child {
+    padding-bottom: 0;
   }
 
   .arrowBox {
@@ -31,7 +35,7 @@
   .arrow {
     position: absolute;
     top: -4px;
-    left: $arrowCalc;
+    left: calc(50% - 100px);
     transform: rotate(45deg);
 
     width: 10px;
@@ -45,41 +49,59 @@
 }
 
 .item {
+  all: unset;
+
   cursor: pointer;
 
   display: flex;
+  gap: 6px;
   align-items: center;
   justify-content: start;
 
-  width: 100%;
-  padding: 12px 4px;
+  padding: 12px 0;
 
-  color: var(--color-light-900);
+  font-size: 14px;
+  color: var(--color-light-100);
 
   border-top: 1px solid var(--color-dark-500);
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 .email {
+  all: unset;
   color: var(--color-dark-100);
 }
 
 .profiledrop {
-  @include contentDropMenu(calc(50% - 100px));
+  @include contentDropMenu();
+
+  position: relative;
 
   .icon {
-    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
 .default {
-  @include contentDropMenu(calc(50% - 50px));
+  @include contentDropMenu();
+
+  position: relative;
 
   .icon {
-    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
 .iconButton {
+  cursor: pointer;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;

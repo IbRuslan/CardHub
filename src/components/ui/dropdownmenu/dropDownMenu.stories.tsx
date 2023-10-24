@@ -19,6 +19,7 @@ type Story = StoryObj<typeof meta>
 
 export const ProfileMenu: Story = {
   args: {
+    arrow: true,
     children: (
       <DropDownItem
         el={{ email: 'ribragimov2003@gmail.com', icon: <HomeIcon />, title: 'Ivan' }}
