@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 
+import { Typography } from '@/components/ui'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 
 import s from './dropDownMenu.module.scss'
@@ -44,8 +45,12 @@ export const DropDownItem = ({ el, onSelect }: DropDownItemProps) => {
     <DropdownMenu.Item className={s.item} onSelect={onSelect}>
       <div className={s.icon}>{el.icon}</div>
       <div>
-        {el.title}
-        <div className={s.email}>{el.email}</div>
+        <Typography variant={'caption'}>{el.title}</Typography>
+        {el.email && (
+          <Typography className={s.email} variant={'caption'}>
+            {el.email}
+          </Typography>
+        )}
       </div>
     </DropdownMenu.Item>
   )

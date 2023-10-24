@@ -17,7 +17,7 @@
 
 .auth {
   display: flex;
-  gap: 14px;
+  gap: 8px;
   align-items: center;
   justify-content: end;
 
@@ -25,6 +25,7 @@
 }
 
 .email {
+  all: unset;
   font-weight: bold;
   border-bottom: 1px dashed;
 }

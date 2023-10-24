@@ -13,7 +13,6 @@ export type TextFieldPropsType = {
   onValueChange?: (value: string) => void
   password?: boolean
   search?: boolean
-  value?: string
 } & ComponentPropsWithoutRef<'input'>
 
 export const TextField = forwardRef<HTMLInputElement, TextFieldPropsType>(
@@ -25,15 +24,15 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldPropsType>(
       label,
       onChange,
       onValueChange,
-      password,
+      password = false,
       search,
-      value,
       ...rest
     },
     ref
   ) => {
-    const [passwordVisible, setPasswordVisible] = useState(false)
-    const onChangeHandlerValue = (e: ChangeEvent<HTMLInputElement>) => {
+    const [passwordVisible, setPasswordVisible] = useState(password)
+
+    function onChangeHandlerValue(e: ChangeEvent<HTMLInputElement>) {
       onChange?.(e)
       onValueChange?.(e.target.value)
     }
@@ -56,7 +55,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldPropsType>(
             </div>
           </>
         )}
-        {(search ? value : false) && (
+        {(search ? rest.value : false) && (
           <div className={s.crossButton} onClick={() => onValueChange && onValueChange('')}>
             <Cross />
           </div>
@@ -68,13 +67,13 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldPropsType>(
           } ${className}`}
           disabled={disabled}
           onChange={onChangeHandlerValue}
+          ref={ref}
           type={passwordVisible ? 'password' : 'text'}
-          value={value}
           {...rest}
         />
         {password && (
           <div className={s.passwordButton} onClick={() => setPasswordVisible(prev => !prev)}>
-            {passwordVisible ? <Eye /> : <ClosedEye />}
+            {passwordVisible ? <ClosedEye /> : <Eye />}
           </div>
         )}
         <Typography

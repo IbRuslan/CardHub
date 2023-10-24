@@ -5,9 +5,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 const loginSchema = z.object({
-  email: z.string().email('Invalid email address'),
+  email: z.string().email('Invalid email address').min(10),
   password: z.string().min(3, 'Too short password'),
-  rememberMe: z.boolean().optional(),
+  rememberMe: z.boolean().default(false),
 })
 
 type FormValues = z.infer<typeof loginSchema>
@@ -23,8 +23,6 @@ export const LoginForm = () => {
     resolver: zodResolver(loginSchema),
   })
 
-  console.log(errors)
-
   const {
     field: { onChange, value },
   } = useController({
@@ -35,6 +33,8 @@ export const LoginForm = () => {
   const onSubmit = (data: FormValues) => {
     console.log(data)
   }
+
+  //onChange: (value: string) => void
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
