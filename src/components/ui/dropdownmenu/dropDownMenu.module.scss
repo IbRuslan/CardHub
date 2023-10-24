@@ -1,7 +1,6 @@
-@mixin contentDropMenu($arrowCalc) {
+@mixin contentDropMenu() {
   will-change: transform, opacity;
 
-  position: relative;
   z-index: 1;
   right: 89px;
 
@@ -36,7 +35,7 @@
   .arrow {
     position: absolute;
     top: -4px;
-    left: $arrowCalc;
+    left: calc(50% - 100px);
     transform: rotate(45deg);
 
     width: 10px;
@@ -61,7 +60,7 @@
 
   padding: 12px 0;
 
-  font-size: 13px;
+  font-size: 14px;
   color: var(--color-light-100);
 
   border-top: 1px solid var(--color-dark-500);
@@ -77,7 +76,9 @@
 }
 
 .profiledrop {
-  @include contentDropMenu(calc(50% - 100px));
+  @include contentDropMenu();
+
+  position: relative;
 
   .icon {
     display: flex;
@@ -87,7 +88,9 @@
 }
 
 .default {
-  @include contentDropMenu(calc(50% - 50px));
+  @include contentDropMenu();
+
+  position: relative;
 
   .icon {
     display: flex;

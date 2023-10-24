@@ -1,6 +1,7 @@
-import { useController, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
-import { Button, SuperCheckbox, TextField } from '@/components/ui/'
+import { ControlledCheckbox } from '@/components/controlled'
+import { Button, TextField } from '@/components/ui/'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -23,18 +24,9 @@ export const LoginForm = () => {
     resolver: zodResolver(loginSchema),
   })
 
-  const {
-    field: { onChange, value },
-  } = useController({
-    control,
-    name: 'rememberMe',
-  })
-
   const onSubmit = (data: FormValues) => {
     console.log(data)
   }
-
-  //onChange: (value: string) => void
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -45,7 +37,7 @@ export const LoginForm = () => {
         label={'password'}
         password
       />
-      <SuperCheckbox checked={value} label={'Remember me'} onChange={onChange} />
+      <ControlledCheckbox control={control} label={'Remember me'} name={'rememberMe'} />
       <Button type={'submit'}>Submit</Button>
     </form>
   )

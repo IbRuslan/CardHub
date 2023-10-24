@@ -23,7 +23,7 @@ export const Header = () => {
             {email}
           </Typography>
           {isAuth ? (
-            <DropDownMenu trigger={<Avatar />} variant={'profiledrop'}>
+            <DropDownMenu arrow trigger={<Avatar />} variant={'profiledrop'}>
               <DropDownItem
                 el={{ email, icon: <Avatar />, title: name }}
                 onSelect={onSelectProfile}
