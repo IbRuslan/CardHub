@@ -17,7 +17,7 @@ export const ProfileInfo = ({ changeName, onLogout, userInfo }: ProfileInfoProps
   const [error, setError] = useState('')
 
   const onLogoutHandler = () => {
-    onLogout
+    onLogout()
   }
 
   const changeNameHandler = () => {
