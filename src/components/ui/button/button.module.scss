@@ -24,6 +24,11 @@
     cursor: default;
     opacity: 0.5;
   }
+
+  &.fullWidth {
+    justify-content: center;
+    width: 100%;
+  }
 }
 
 .primary {
@@ -92,9 +97,4 @@
   &:active:enabled {
     color: var(--color-accent-700);
   }
-}
-
-.fullWidth {
-  justify-content: center;
-  width: 100%;
 }

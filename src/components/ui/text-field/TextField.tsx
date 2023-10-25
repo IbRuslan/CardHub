@@ -48,34 +48,33 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldPropsType>(
             {label}
           </Typography>
         )}
-        {search && (
-          <>
+        <div className={s.fieldContainer}>
+          {search && (
             <div className={s.searchButton} onClick={() => {}}>
               <Search />
             </div>
-          </>
-        )}
-        {(search ? rest.value : false) && (
-          <div className={s.crossButton} onClick={() => onValueChange && onValueChange('')}>
-            <Cross />
-          </div>
-        )}
-
-        <input
-          className={`${disabled && s.disabled} ${search && s.search} ${
-            error ? s.error : ''
-          } ${className}`}
-          disabled={disabled}
-          onChange={onChangeHandlerValue}
-          ref={ref}
-          type={passwordVisible ? 'password' : 'text'}
-          {...rest}
-        />
-        {password && (
-          <div className={s.passwordButton} onClick={() => setPasswordVisible(prev => !prev)}>
-            {passwordVisible ? <ClosedEye /> : <Eye />}
-          </div>
-        )}
+          )}
+          <input
+            className={`${disabled && s.disabled} ${search && s.search} ${
+              error ? s.error : ''
+            } ${className}`}
+            disabled={disabled}
+            onChange={onChangeHandlerValue}
+            ref={ref}
+            type={passwordVisible ? 'password' : 'text'}
+            {...rest}
+          />
+          {password && (
+            <div className={s.passwordButton} onClick={() => setPasswordVisible(prev => !prev)}>
+              {passwordVisible ? <ClosedEye /> : <Eye />}
+            </div>
+          )}
+          {(search ? rest.value : false) && (
+            <div className={s.crossButton} onClick={() => onValueChange && onValueChange('')}>
+              <Cross />
+            </div>
+          )}
+        </div>
         <Typography
           as={'label'}
           className={`${s.errorSpan} ${disabled ? s.disabled : ''}`}
