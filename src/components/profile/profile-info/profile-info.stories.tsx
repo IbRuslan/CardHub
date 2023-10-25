@@ -12,8 +12,8 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    changeName: () => {},
-    onLogout: () => {},
+    changeName: (value: string) => console.log(value),
+    onLogout: () => console.log('logout'),
     userInfo: { avatar: '', email: 'ribragimov2003@gmail.com', name: 'Ruslan' },
   },
 }

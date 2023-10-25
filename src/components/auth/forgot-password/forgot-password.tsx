@@ -13,23 +13,25 @@ const forgotPasswordSchema = z.object({
 
 type FormValues = z.infer<typeof forgotPasswordSchema>
 
-export const ForgotPassword = () => {
+type ForgotPasswordProps = {
+  onSubmit: (data: FormValues) => void
+}
+
+export const ForgotPassword = (props: ForgotPasswordProps) => {
   const { control, handleSubmit } = useForm<FormValues>({
     defaultValues: { email: '' },
     mode: 'onSubmit',
     resolver: zodResolver(forgotPasswordSchema),
   })
 
-  const onSubmit = (data: FormValues) => {
-    console.log(data)
-  }
+  const handleFormSubmitted = handleSubmit(props.onSubmit)
 
   return (
     <Card className={s.wrapper}>
       <Typography as={'h2'} className={s.title} variant={'body1'}>
         Forgot your password?
       </Typography>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleFormSubmitted}>
         <div className={s.textfields}>
           <ControlledTextField
             control={control}

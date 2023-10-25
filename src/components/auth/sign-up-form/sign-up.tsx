@@ -27,23 +27,25 @@ const signUpSchema = z
 
 type FormValues = z.infer<typeof signUpSchema>
 
-export const SignUp = () => {
+type SignUpProps = {
+  onSubmit: (data: FormValues) => void
+}
+
+export const SignUp = (props: SignUpProps) => {
   const { control, handleSubmit } = useForm<FormValues>({
     defaultValues: { email: '', password: '', passwordConfirm: '' },
     mode: 'onSubmit',
     resolver: zodResolver(signUpSchema),
   })
 
-  const onSubmit = (data: FormValues) => {
-    console.log(data)
-  }
+  const handleFormSubmitted = handleSubmit(props.onSubmit)
 
   return (
     <Card className={s.wrapper}>
       <Typography as={'h1'} className={s.title} variant={'large'}>
         Sign Up
       </Typography>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleFormSubmitted}>
         <div className={s.textfields}>
           <ControlledTextField
             control={control}
