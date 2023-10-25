@@ -3,7 +3,11 @@ import { Button, Card, Typography } from '@/components/ui'
 
 import s from './check-email.module.scss'
 
-export const CheckEmail = () => {
+type CheckEmailProps = {
+  email: string
+}
+
+export const CheckEmail = ({ email }: CheckEmailProps) => {
   return (
     <Card className={s.wrapper}>
       <Typography as={'h2'} className={s.title} variant={'large'}>
@@ -13,7 +17,7 @@ export const CheckEmail = () => {
         <CheckEmailIcon />
       </div>
       <Typography className={s.description} variant={'body2'}>
-        We’ve sent an Email with instructions to example@mail.com
+        We’ve sent an Email with instructions to {email}
       </Typography>
       <Button as={'a'} className={s.button} fullWidth>
         Back to Sign In

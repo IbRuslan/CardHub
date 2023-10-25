@@ -13,23 +13,25 @@ const newPasswordSchema = z.object({
 
 type FormValues = z.infer<typeof newPasswordSchema>
 
-export const NewPassword = () => {
+type NewPasswordProps = {
+  onSubmit: (data: FormValues) => void
+}
+
+export const NewPassword = (props: NewPasswordProps) => {
   const { control, handleSubmit } = useForm<FormValues>({
     defaultValues: { password: '' },
     mode: 'onSubmit',
     resolver: zodResolver(newPasswordSchema),
   })
 
-  const Submit = (data: FormValues) => {
-    console.log(data)
-  }
+  const handleFormSubmitted = handleSubmit(props.onSubmit)
 
   return (
     <Card className={s.wrapper}>
       <Typography as={'h2'} className={s.title} variant={'large'}>
         Create new password
       </Typography>
-      <form onSubmit={handleSubmit(Submit)}>
+      <form onSubmit={handleFormSubmitted}>
         <div className={s.textfields}>
           <ControlledTextField
             control={control}

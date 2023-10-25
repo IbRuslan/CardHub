@@ -15,23 +15,25 @@ const loginSchema = z.object({
 
 type FormValues = z.infer<typeof loginSchema>
 
-export const LoginForm = () => {
+type LoginFormProps = {
+  onSubmit: (data: FormValues) => void
+}
+
+export const LoginForm = (props: LoginFormProps) => {
   const { control, handleSubmit } = useForm<FormValues>({
     defaultValues: { email: '', password: '', rememberMe: false },
     mode: 'onSubmit',
     resolver: zodResolver(loginSchema),
   })
 
-  const onSubmit = (data: FormValues) => {
-    console.log(data)
-  }
+  const handleFormSubmitted = handleSubmit(props.onSubmit)
 
   return (
     <Card className={s.wrapper}>
       <Typography as={'h1'} className={s.title} variant={'large'}>
         Sign In
       </Typography>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleFormSubmitted}>
         <div className={s.textfields}>
           <ControlledTextField
             control={control}
