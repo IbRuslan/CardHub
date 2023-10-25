@@ -27,32 +27,41 @@ export const LoginForm = () => {
 
   return (
     <Card className={s.wrapper}>
-      <Typography className={s.title} variant={'large'}>
+      <Typography as={'h1'} className={s.title} variant={'large'}>
         Sign In
       </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={s.textfields}>
           <ControlledTextField
             control={control}
-            label={'email'}
+            label={'Email'}
             name={'email'}
             placeholder={'Email'}
-            search
           />
           <ControlledTextField
             control={control}
-            label={'password'}
+            label={'Password'}
             name={'password'}
             password
             placeholder={'Password'}
           />
         </div>
         <ControlledCheckbox control={control} label={'Remember me'} name={'rememberMe'} />
-        <Typography className={s.caption} variant={'body2'}>{`Don't have an account?`}</Typography>
+        <Typography
+          as={'a'}
+          className={s.forgotpassword}
+          variant={'body2'}
+        >{`Forgot Password?`}</Typography>
         <Button className={s.button} fullWidth type={'submit'}>
           Sign In
         </Button>
       </form>
+      <Typography className={s.caption} variant={'body2'}>
+        {`Don't have an account?`}
+      </Typography>
+      <Typography as={'a'} className={s.signup} variant={'link1'}>
+        Sign Up
+      </Typography>
     </Card>
   )
 }
