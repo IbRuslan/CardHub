@@ -1,0 +1,27 @@
+.wrapper {
+  max-width: 420px;
+  margin: 36px auto;
+  padding: 33px;
+}
+
+.title {
+  margin-bottom: 27px;
+  text-align: center;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.description {
+  margin: 0 0 65px;
+  color: var(--color-light-900);
+  text-align: center;
+  opacity: 0.5;
+}
+
+.button {
+  margin-bottom: 30px;
+}
