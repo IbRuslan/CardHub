@@ -5,24 +5,25 @@ import { Avatar, Button, Card, TextField, Typography } from '@/components/ui'
 
 import s from './profile-info.module.scss'
 
-export const ProfileInfo = () => {
-  const onLogoutHandler = () => {
-    console.log('logout')
-  }
+type ProfileInfoProps = {
+  changeName: (value: string) => void
+  onLogout: () => void
+  userInfo: { avatar: string; email: string; name: string }
+}
 
-  const profileInfo = {
-    avatar: '',
-    email: 'ribragimov2003@gmail.com',
-    name: 'Ivan',
-  }
-
-  const [value, setValue] = useState(profileInfo.name)
+export const ProfileInfo = ({ changeName, onLogout, userInfo }: ProfileInfoProps) => {
+  const [value, setValue] = useState(userInfo.name)
   const [open, setOpen] = useState(false)
   const [error, setError] = useState('')
+
+  const onLogoutHandler = () => {
+    onLogout
+  }
 
   const changeNameHandler = () => {
     setOpen(false)
     setError('')
+    changeName(value)
   }
 
   const onChangeValueHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +41,7 @@ export const ProfileInfo = () => {
         Personal Information
       </Typography>
       <div className={s.icon}>
-        <Avatar size={'100'} src={profileInfo.avatar ? profileInfo.avatar : ''} />
+        <Avatar size={'100'} src={userInfo.avatar ? userInfo.avatar : ''} />
       </div>
       {open ? (
         <>
@@ -54,7 +55,7 @@ export const ProfileInfo = () => {
       ) : (
         <Typography as={'h3'} className={s.name} variant={'body2'}>
           <>
-            {profileInfo.name}
+            {userInfo.name}
             <div className={s.editIcon} onClick={() => setOpen(true)}>
               <ChangeIcon />
             </div>
@@ -63,7 +64,7 @@ export const ProfileInfo = () => {
       )}
 
       <Typography className={s.email} variant={'body2'}>
-        {profileInfo.email}
+        {userInfo.email}
       </Typography>
       <div className={s.buttons}>
         <Button
