@@ -38,10 +38,14 @@ export const Modal = ({
           </div>
           <div className={s.children}>{children}</div>
           <div className={s.buttons}>
-            <Button onClick={() => props.onOpenChange(false)} variant={'secondary'}>
+            <Button
+              className={s.button}
+              onClick={() => props.onOpenChange(false)}
+              variant={'secondary'}
+            >
               Cancel
             </Button>
-            <Button onClick={onClickSetChanges} variant={'primary'}>
+            <Button className={s.button} onClick={onClickSetChanges} variant={'primary'}>
               {titleForButton}
             </Button>
           </div>
