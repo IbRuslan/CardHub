@@ -1,4 +1,4 @@
-import { Tab } from '@/services'
+import { Tab } from '@/services/packs/packs.types'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 export const decksSlice = createSlice({
