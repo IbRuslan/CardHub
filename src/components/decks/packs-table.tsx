@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import { Edit2Outline, PlayCircleOutline, TrashOutline } from '@/assets'
+import { Edit2Outline, PlayCircleOutline, TrashOutline } from '@/assets/icons'
 import {
   Button,
   Column,
@@ -43,7 +43,7 @@ type Props = {
   onDeleteClick: (id: string) => void
   onEditClick: (id: string) => void
 }
-export const DecksTable = ({ currentUserId, decks, onDeleteClick, onEditClick }: Props) => {
+export const PacksTable = ({ currentUserId, decks, onDeleteClick, onEditClick }: Props) => {
   const handleEditClick = (id: string) => () => onEditClick(id)
   const handleDeleteClick = (id: string) => () => onDeleteClick(id)
 
