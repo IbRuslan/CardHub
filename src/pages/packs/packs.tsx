@@ -1,3 +1,6 @@
+import { useState } from 'react'
+
+import { PacksTable } from '@/components/decks/packs-table'
 import {
   Button,
   Pagination,
@@ -7,10 +10,28 @@ import {
   TextField,
   Typography,
 } from '@/components/ui'
+import { useGetDecksQuery } from '@/services/base-api.ts'
+import { useAppDispatch, useAppSelector } from '@/services/store.ts'
 
 export const Packs = () => {
-  const totalCount = 100
-  const page = 1
+  const [showCreateModal, setShowCreateModal] = useState(false)
+  const [deckToDeleteId, setDeckToDeleteId] = useState<null | string>(null)
+  const [deckToEditId, setDeckToEditId] = useState<null | string>(null)
+
+  const dispatch = useAppDispatch()
+  const currentPage = useAppSelector(selectDecksCurrentPage)
+
+  const currentUserId = 'f2be95b9-4d07-4751-a775-bd612fc9553a'
+  const authorId = currentTab === 'my' ? currentUserId : undefined
+
+  const { data: decks } = useGetDecksQuery({
+    authorId,
+    currentPage,
+    maxCardsCount: maxCards,
+    minCardsCount: minCards,
+    name: search,
+  })
+
   const value = 5
   const changePageHandler = (page: number, value: number) => {}
 
@@ -41,11 +62,17 @@ export const Packs = () => {
         />
         <Button variant={'secondary'}>Clear Filter</Button>
       </div>
+      <PacksTable
+        currentUserId={currentUserId}
+        decks={decks?.items}
+        onDeleteClick={setDeckToDeleteId}
+        onEditClick={setDeckToEditId}
+      />
       <Pagination
         onChangePage={changePageHandler}
-        page={page}
+        page={currentPage}
         select
-        totalCount={totalCount}
+        totalCount={decks?.pagination?.totalPages || 1}
         value={value}
       />
     </div>
