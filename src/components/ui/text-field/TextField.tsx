@@ -38,7 +38,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldPropsType>(
     }
 
     return (
-      <div className={s.textFiled}>
+      <div className={`${s.textFiled} ${className}`}>
         {label && (
           <Typography
             as={'label'}
@@ -55,9 +55,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldPropsType>(
             </div>
           )}
           <input
-            className={`${disabled && s.disabled} ${search && s.search} ${
-              error ? s.error : ''
-            } ${className}`}
+            className={`${disabled && s.disabled} ${search && s.search} ${error ? s.error : ''}`}
             disabled={disabled}
             onChange={onChangeHandlerValue}
             ref={ref}

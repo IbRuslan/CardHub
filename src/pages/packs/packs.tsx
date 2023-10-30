@@ -27,6 +27,8 @@ import { decksSlice } from '@/services/packs/packs.slice'
 import { Tab } from '@/services/packs/packs.types'
 import { useAppDispatch, useAppSelector } from '@/services/store'
 
+import s from './packs.module.scss'
+
 export const Packs = () => {
   const [showCreateModal, setShowCreateModal] = useState(false)
   const [deckToDeleteId, setDeckToDeleteId] = useState<null | string>(null)
@@ -87,18 +89,20 @@ export const Packs = () => {
   }
 
   return (
-    <div>
-      <div>
+    <div className={s.container}>
+      <div className={s.title}>
         <div>
           <Typography as={'h1'} variant={'large'}>
             Packs list
           </Typography>
         </div>
         <div>
-          <Button variant={'primary'}>Add New Pack</Button>
+          <Button className={s.button} variant={'primary'}>
+            Add New Pack
+          </Button>
         </div>
       </div>
-      <div>
+      <div className={s.filtres}>
         <TextField
           onValueChange={setSearch}
           placeholder={'Search'}
@@ -120,7 +124,7 @@ export const Packs = () => {
           onValueCommit={handleSliderCommitted}
           value={rangeValue}
         />
-        <Button onClick={resetFilters} variant={'secondary'}>
+        <Button className={s.buttonFilter} onClick={resetFilters} variant={'secondary'}>
           Clear Filter
         </Button>
       </div>

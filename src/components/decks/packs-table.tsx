@@ -11,6 +11,7 @@ import {
   TableRow,
   Typography,
 } from '@/components/ui'
+import { Deck } from '@/services/packs/packs.types'
 import { formatDate } from '@/utils/format-date'
 
 import s from './packs-table.module.scss'
@@ -39,7 +40,7 @@ const columns: Column[] = [
 
 type Props = {
   currentUserId: string
-  decks: any[] | undefined
+  decks: Deck[] | undefined
   onDeleteClick: (id: string) => void
   onEditClick: (id: string) => void
 }
@@ -54,9 +55,12 @@ export const PacksTable = ({ currentUserId, decks, onDeleteClick, onEditClick }:
         {decks?.map(deck => (
           <TableRow key={deck.id}>
             <TableCell>
-              <Typography as={Link} to={`/decks/${deck.id}`} variant={'body2'}>
-                {deck.name}
-              </Typography>
+              <div className={s.nameDeck}>
+                {deck.cover ? <img alt={'img'} className={s.cover} src={deck.cover} /> : ''}
+                <Typography as={Link} to={`/decks/${deck.id}`} variant={'body2'}>
+                  {deck.name}
+                </Typography>
+              </div>
             </TableCell>
             <TableCell>{deck.cardsCount}</TableCell>
             <TableCell>{formatDate(deck.updated)}</TableCell>

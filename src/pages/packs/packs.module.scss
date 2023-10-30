@@ -1,0 +1,35 @@
+.container {
+  width: 100%;
+  max-width: 1038px;
+  margin: auto;
+  padding: 0 15px;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  padding: 7px 16px;
+}
+
+.buttonFilter {
+  display: flex;
+  justify-content: center;
+  width: 60%;
+}
+
+.filtres {
+  display: flex;
+  gap: 5px;
+  align-items: end;
+  justify-content: space-between;
+
+  margin-top: 10px;
+  margin-bottom: 36px;
+}
+
+.inputFilter {
+  width: 50% !important;
+}
