@@ -19,7 +19,7 @@ export const Pagination = ({ onChangePage, select, totalCount, ...props }: Pagin
   const [value, setValue] = useState(props.value)
   const [page, setPage] = useState(props.page)
 
-  const lastTotalCount = Math.ceil(totalCount / value)
+  // const lastTotalCount = Math.ceil(totalCount / value)
 
   const {
     handleMainPageClicked,
@@ -29,7 +29,7 @@ export const Pagination = ({ onChangePage, select, totalCount, ...props }: Pagin
     isLastPage,
     paginationRange,
   } = usePagination({
-    count: lastTotalCount,
+    count: totalCount,
     onChange: setPage,
     page,
   })
