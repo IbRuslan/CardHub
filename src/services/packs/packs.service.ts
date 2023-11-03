@@ -17,7 +17,7 @@ const decksService = baseApi.injectEndpoints({
         const data = getCacheEntry()
         const state = getState()
 
-        decksService.util.re
+        decksService.util.resetApiState
         await queryFulfilled
       },
       query: body => ({

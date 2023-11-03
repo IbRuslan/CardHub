@@ -6,7 +6,7 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
-import { Packs } from '@/pages'
+import { NotFound, Packs } from '@/pages'
 
 const publicRoutes: RouteObject[] = [
   {
@@ -32,6 +32,10 @@ const router = createBrowserRouter([
     element: <PrivateRoutes />,
   },
   ...publicRoutes,
+  {
+    element: <NotFound />,
+    path: '*',
+  },
 ])
 
 export const Router = () => {
