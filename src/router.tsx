@@ -6,7 +6,7 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
-import { NotFound, Packs } from '@/pages'
+import { NotFound, Packs, Profile } from '@/pages'
 
 const publicRoutes: RouteObject[] = [
   {
@@ -23,6 +23,10 @@ const privateRoutes: RouteObject[] = [
   {
     element: <div>not work for now</div>,
     path: '/decks/:deckId',
+  },
+  {
+    element: <Profile />,
+    path: '/profile',
   },
 ]
 
