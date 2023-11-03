@@ -33,5 +33,9 @@
 
   font-size: var(--font-size-m);
   font-weight: var(--font-weight-bold);
-  color: var(--color-accent-500);
+  color: var(--color-accent-500) !important;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
