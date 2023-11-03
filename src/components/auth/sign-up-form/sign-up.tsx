@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 
 import { ControlledTextField } from '@/components/controlled'
 import { Button, Card, Typography } from '@/components/ui'
@@ -75,7 +76,7 @@ export const SignUp = (props: SignUpProps) => {
       <Typography className={s.caption} variant={'body2'}>
         {`Already have an account?`}
       </Typography>
-      <Typography as={'a'} className={s.signup} variant={'link1'}>
+      <Typography as={Link} className={s.signup} to={'/login'} variant={'link1'}>
         Sign In
       </Typography>
     </Card>

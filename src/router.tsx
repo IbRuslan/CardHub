@@ -6,12 +6,20 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
-import { NotFound, Packs, Profile } from '@/pages'
+import { NotFound, Packs, PasswordRecovery, Profile, RegistrationPage, SignInPage } from '@/pages'
 
 const publicRoutes: RouteObject[] = [
   {
-    element: <div>login</div>,
+    element: <SignInPage />,
     path: '/login',
+  },
+  {
+    element: <RegistrationPage />,
+    path: '/registration',
+  },
+  {
+    element: <PasswordRecovery />,
+    path: '/password-recovery',
   },
 ]
 
