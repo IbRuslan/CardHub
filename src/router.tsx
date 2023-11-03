@@ -6,7 +6,7 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
-import { NotFound, Packs, Profile, RegistrationPage, SignInPage } from '@/pages'
+import { NotFound, Packs, PasswordRecovery, Profile, RegistrationPage, SignInPage } from '@/pages'
 
 const publicRoutes: RouteObject[] = [
   {
@@ -18,7 +18,7 @@ const publicRoutes: RouteObject[] = [
     path: '/registration',
   },
   {
-    element: <div>hu</div>,
+    element: <PasswordRecovery />,
     path: '/password-recovery',
   },
 ]

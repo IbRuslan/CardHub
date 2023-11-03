@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 
 import { ControlledTextField } from '@/components/controlled'
 import { Button, Card, Typography } from '@/components/ui'
@@ -50,7 +51,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
       <Typography className={s.caption} variant={'body2'}>
         {`Did you remember your password?`}
       </Typography>
-      <Typography as={'a'} className={s.trylogging} variant={'link1'}>
+      <Typography as={Link} className={s.trylogging} to={'/login'} variant={'link1'}>
         Try logging in
       </Typography>
     </Card>
