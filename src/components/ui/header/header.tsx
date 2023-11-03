@@ -1,3 +1,5 @@
+import { Link, useNavigate } from 'react-router-dom'
+
 import { Avatar, Button, DropDownItem, DropDownMenu, Typography } from '@/components/ui'
 import { ExitIcon, HomeIcon } from '@radix-ui/react-icons'
 
@@ -8,15 +10,22 @@ export const Header = () => {
   const email = 'ribragimov2003@gmail.com'
   const name = 'Ruslan'
 
-  const onClickNavigateHandler = () => {}
-  const onSelectProfile = () => {}
-  const onSelectNavigateLogOut = () => {}
+  const navigate = useNavigate()
+
+  const onSelectProfile = () => {
+    navigate('/profile')
+  }
+  const onSelectNavigateLogOut = () => {
+    navigate('/login')
+  }
 
   return (
     <header className={s.header}>
       <div className={s.container}>
         <div>
-          <Typography variant={'large'}>CardHub</Typography>
+          <Typography as={Link} className={s.pageName} to={'/'} variant={'link1'}>
+            CardHub
+          </Typography>
         </div>
         <div className={s.auth}>
           <Typography className={s.email} variant={'body2'}>
@@ -38,7 +47,7 @@ export const Header = () => {
               />
             </DropDownMenu>
           ) : (
-            <Button onClick={onClickNavigateHandler} variant={'primary'}>
+            <Button as={Link} to={'/login'} variant={'primary'}>
               Sign in
             </Button>
           )}

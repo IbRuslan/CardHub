@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { PacksTable } from '@/components/decks/packs-table'
 import {
   Button,
+  Header,
   Pagination,
   SuperSlider,
   TabSwitcher,
@@ -89,58 +90,61 @@ export const Packs = () => {
   }
 
   return (
-    <div className={s.container}>
-      <div className={s.title}>
-        <div>
-          <Typography as={'h1'} variant={'large'}>
-            Packs list
-          </Typography>
+    <div>
+      <Header />
+      <div className={s.container}>
+        <div className={s.title}>
+          <div>
+            <Typography as={'h1'} variant={'large'}>
+              Packs list
+            </Typography>
+          </div>
+          <div>
+            <Button className={s.button} variant={'primary'}>
+              Add New Pack
+            </Button>
+          </div>
         </div>
-        <div>
-          <Button className={s.button} variant={'primary'}>
-            Add New Pack
+        <div className={s.filtres}>
+          <TextField
+            onValueChange={setSearch}
+            placeholder={'Search'}
+            search
+            value={search}
+          ></TextField>
+          <TabSwitcher
+            defaultValue={currentTab}
+            onChange={value => setCurrentTab(value as Tab)}
+            title={'Show packs cards'}
+          >
+            <TabTrigger title={'My packs'} value={'my'} />
+            <TabTrigger title={'All packs'} value={'all'} />
+          </TabSwitcher>
+          <SuperSlider
+            max={decks?.maxCardsCount || 0}
+            min={0}
+            onValueChange={setRangeValue}
+            onValueCommit={handleSliderCommitted}
+            value={rangeValue}
+          />
+          <Button className={s.buttonFilter} onClick={resetFilters} variant={'secondary'}>
+            Clear Filter
           </Button>
         </div>
-      </div>
-      <div className={s.filtres}>
-        <TextField
-          onValueChange={setSearch}
-          placeholder={'Search'}
-          search
-          value={search}
-        ></TextField>
-        <TabSwitcher
-          defaultValue={currentTab}
-          onChange={value => setCurrentTab(value as Tab)}
-          title={'Show packs cards'}
-        >
-          <TabTrigger title={'My packs'} value={'my'} />
-          <TabTrigger title={'All packs'} value={'all'} />
-        </TabSwitcher>
-        <SuperSlider
-          max={decks?.maxCardsCount || 0}
-          min={0}
-          onValueChange={setRangeValue}
-          onValueCommit={handleSliderCommitted}
-          value={rangeValue}
+        <PacksTable
+          currentUserId={currentUserId}
+          decks={decks?.items}
+          onDeleteClick={setDeckToDeleteId}
+          onEditClick={setDeckToEditId}
         />
-        <Button className={s.buttonFilter} onClick={resetFilters} variant={'secondary'}>
-          Clear Filter
-        </Button>
+        <Pagination
+          onChangePage={changePageHandler}
+          page={currentPage}
+          select
+          totalCount={decks?.pagination?.totalPages || 1}
+          value={value}
+        />
       </div>
-      <PacksTable
-        currentUserId={currentUserId}
-        decks={decks?.items}
-        onDeleteClick={setDeckToDeleteId}
-        onEditClick={setDeckToEditId}
-      />
-      <Pagination
-        onChangePage={changePageHandler}
-        page={currentPage}
-        select
-        totalCount={decks?.pagination?.totalPages || 1}
-        value={value}
-      />
     </div>
   )
 }
